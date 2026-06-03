@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>琉戀忘返：小琉球深度探索指南</title>
+    <title>琉戀忘返：小琉球深度探索與生態慢活指南</title>
     <!-- 引入 Tailwind CSS 進行現代化響應式設計 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入 Font Awesome 圖示庫 -->
@@ -31,7 +31,7 @@
 
         /* 英雄背景圖：陽光折射下的綠蠵龜生態 */
         .hero-bg {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80');
+            background-image: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.65)), url('https://images.unsplash.com/photo-1518467166-367ae630df20?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -97,6 +97,14 @@
             opacity: 1 !important;
             pointer-events: auto !important;
         }
+
+        /* Accordion 箭頭動畫 */
+        .accordion-arrow {
+            transition: transform 0.3s ease;
+        }
+        .accordion-active .accordion-arrow {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
@@ -112,14 +120,15 @@
                 </div>
                 
                 <!-- 桌面版選單 -->
-                <div class="hidden md:flex space-x-1 lg:space-x-4 items-center">
-                    <a href="#about" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">認識小琉球</a>
-                    <a href="#interactive-map" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">導覽地圖</a>
-                    <a href="#transport" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">交通住宿</a>
-                    <a href="#attractions" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">經典地標</a>
-                    <a href="#food" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">在地美食</a>
-                    <a href="#activities" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">玩樂體驗</a>
-                    <a href="#secret" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-3 py-2 rounded-lg transition-all font-medium text-sm">私房秘境</a>
+                <div class="hidden md:flex space-x-1 lg:space-x-3 items-center">
+                    <a href="#about" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">認識小琉球</a>
+                    <a href="#itinerary" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">推薦行程</a>
+                    <a href="#interactive-map" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">導覽地圖</a>
+                    <a href="#transport" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">交通住宿</a>
+                    <a href="#attractions" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">經典地標</a>
+                    <a href="#food" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">在地美食</a>
+                    <a href="#calculator" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">預算估算</a>
+                    <a href="#faq" class="nav-link text-white hover:text-sky-400 hover:bg-white/10 px-2.5 py-2 rounded-lg transition-all font-medium text-sm">旅遊QA</a>
                     <a href="#checklist" class="bg-sky-500 hover:bg-sky-600 text-white px-4 py-2 rounded-full font-bold text-xs tracking-wider transition-all shadow-md hover:shadow-sky-500/20"><i class="fa-solid fa-suitcase-rolling mr-1"></i> 行前準備</a>
                 </div>
 
@@ -133,21 +142,22 @@
         </div>
 
         <!-- 手機版選單內容 -->
-        <div id="mobile-menu" class="hidden md:hidden absolute w-11/12 left-1/2 -translate-x-1/2 mt-3 p-4 rounded-2xl bg-white/95 backdrop-blur-lg shadow-2xl border border-slate-100 flex flex-col space-y-2">
-            <a href="#about" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-anchor mr-2 text-sky-500"></i>認識小琉球</a>
-            <a href="#interactive-map" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-map-location-dot mr-2 text-sky-500"></i>導覽地圖</a>
-            <a href="#transport" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-ship mr-2 text-sky-500"></i>交通住宿</a>
-            <a href="#attractions" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-camera-retro mr-2 text-sky-500"></i>經典地標</a>
-            <a href="#food" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-utensils mr-2 text-sky-500"></i>在地美食</a>
-            <a href="#activities" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-water mr-2 text-sky-500"></i>玩樂體驗</a>
-            <a href="#secret" class="px-4 py-3 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-user-secret mr-2 text-sky-500"></i>私房秘境</a>
-            <a href="#checklist" class="block w-full text-center bg-gradient-to-r from-sky-500 to-teal-500 text-white py-3 rounded-xl font-bold transition-all shadow-md mobile-link">行前準備</a>
+        <div id="mobile-menu" class="hidden md:hidden absolute w-11/12 left-1/2 -translate-x-1/2 mt-3 p-4 rounded-2xl bg-white/95 backdrop-blur-lg shadow-2xl border border-slate-100 flex flex-col space-y-1">
+            <a href="#about" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-anchor mr-2 text-sky-500"></i>認識小琉球</a>
+            <a href="#itinerary" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-calendar-days mr-2 text-sky-500"></i>行程推薦</a>
+            <a href="#interactive-map" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-map-location-dot mr-2 text-sky-500"></i>導覽地圖</a>
+            <a href="#transport" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-ship mr-2 text-sky-500"></i>交通住宿</a>
+            <a href="#attractions" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-camera-retro mr-2 text-sky-500"></i>經典地標</a>
+            <a href="#food" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-utensils mr-2 text-sky-500"></i>在地美食</a>
+            <a href="#calculator" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-calculator mr-2 text-sky-500"></i>預算估算</a>
+            <a href="#faq" class="px-4 py-2.5 text-slate-800 hover:bg-sky-50 rounded-xl font-semibold transition-colors mobile-link"><i class="fa-solid fa-circle-question mr-2 text-sky-500"></i>旅遊QA</a>
+            <a href="#checklist" class="block w-full text-center bg-gradient-to-r from-sky-500 to-teal-500 text-white py-3 rounded-xl font-bold transition-all shadow-md mobile-link mt-2">行前準備</a>
         </div>
     </nav>
 
     <!-- 首頁橫幅 (Hero Section) -->
     <header class="hero-bg h-screen flex items-center justify-center text-center relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-900/40 to-slate-50"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-900/45 to-slate-50"></div>
         
         <!-- 動態波浪漂流特效 -->
         <div class="absolute inset-0 pointer-events-none opacity-20">
@@ -156,7 +166,7 @@
         </div>
 
         <div class="relative z-10 px-4 max-w-4xl">
-            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/25 backdrop-blur-md border border-white/30 text-white font-bold text-sm tracking-wider mb-6 shadow-sm">
+            <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-bold text-sm tracking-wider mb-6 shadow-sm">
                 <span class="w-2.5 h-2.5 rounded-full bg-teal-400 animate-ping"></span>
                 與海龜共游的夢幻國度 🐢
             </span>
@@ -170,8 +180,8 @@
                 <a href="#interactive-map" class="w-full sm:w-auto inline-flex items-center justify-center bg-gradient-to-r from-sky-500 to-teal-500 hover:from-sky-600 hover:to-teal-600 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-sky-500/30 text-lg">
                     點擊開啟虛擬地圖 <i class="fa-solid fa-map-location-dot ml-2"></i>
                 </a>
-                <a href="#about" class="w-full sm:w-auto inline-flex items-center justify-center bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/40 font-bold py-4 px-8 rounded-full transition-all duration-300 text-lg">
-                    認識小琉球
+                <a href="#itinerary" class="w-full sm:w-auto inline-flex items-center justify-center bg-white/15 hover:bg-white/25 backdrop-blur-md text-white border border-white/40 font-bold py-4 px-8 rounded-full transition-all duration-300 text-lg">
+                    瀏覽精選行程
                 </a>
             </div>
         </div>
@@ -193,7 +203,7 @@
                 </div>
                 <div>
                     <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">今日天氣</p>
-                    <p class="text-lg font-black text-slate-800">晴朗無雲 28°C</p>
+                    <p class="text-lg font-black text-slate-800">晴朗無雲 28.5°C</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 border-r border-slate-200/60 last:border-0 pr-4">
@@ -201,8 +211,8 @@
                     <i class="fa-solid fa-temperature-empty"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">今日水溫</p>
-                    <p class="text-lg font-black text-slate-800">舒服宜人 26.2°C</p>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">均溫水溫</p>
+                    <p class="text-lg font-black text-slate-800">舒適宜人 26.8°C</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 border-r border-slate-200/60 last:border-0 pr-4">
@@ -210,8 +220,8 @@
                     <i class="fa-solid fa-water"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">最佳潛水能見度</p>
-                    <p class="text-lg font-black text-slate-800">極佳 (15-20米)</p>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">水下能見度</p>
+                    <p class="text-lg font-black text-slate-800">極佳 (15-22米)</p>
                 </div>
             </div>
             <div class="flex items-center gap-4 pr-4">
@@ -219,48 +229,46 @@
                     <i class="fa-solid fa-umbrella-beach"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">潮間帶觀賞時間</p>
-                    <p class="text-lg font-black text-slate-800">14:20 - 16:50</p>
+                    <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">潮間帶導覽時間</p>
+                    <p class="text-lg font-black text-slate-800">14:15 - 17:00</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 認識小琉球 -->
+    <!-- 認識小琉球與生態保育 -->
     <section id="about" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-20">
+            <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 section-title">為什麼迷戀小琉球？</h2>
-                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">全台唯一免受東北季風影響的珊瑚礁島嶼，四季如夏，隨手拍都是明信片大片。</p>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">全台唯一免受東北季風影響的珊瑚礁島嶼，四季如夏，隨手拍都是風景大片。</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- 特色卡 1 -->
                 <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm card-hover flex flex-col justify-between group">
                     <div>
                         <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-8 shadow-md shadow-orange-500/10 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-temperature-sun animate-pulse"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800">四季如春、暖冬聖地</h3>
-                        <p class="text-slate-500 leading-relaxed font-medium">冬季平均海水溫度維持在25度以上，完美阻擋強烈東北季風，是台灣一年四季都能享受浮潛樂趣的頂級避寒天堂。</p>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800">四季如春、避寒聖地</h3>
+                        <p class="text-slate-500 leading-relaxed font-medium">冬季平均海水溫度維持在 25 度以上，完美阻擋強烈東北季風，是台灣一年四季都能享受浮潛與水上活動的度假天堂。</p>
                     </div>
                     <div class="mt-8 overflow-hidden rounded-2xl h-44 relative">
-                        <!-- 真實小琉球暖陽與海洋寫照 -->
-                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="小琉球溫暖海灘" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '四季如春的溫暖海灘', '冬天不受季風影響，海溫維持25度以上，非常適合冬季玩水。')">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="小琉球溫暖海灘" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '四季如春的溫慢海灘', '冬天不受季風影響，海溫維持25度以上，非常適合冬季玩水探險。')">
                     </div>
                 </div>
                 <!-- 特色卡 2 -->
                 <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm card-hover flex flex-col justify-between group">
                     <div>
                         <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-8 shadow-md shadow-emerald-500/10 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-frog"></i>
+                            <i class="fa-solid fa-shield-halved"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800">海龜的快樂老家</h3>
-                        <p class="text-slate-500 leading-relaxed font-medium">全島棲息著上百隻綠蠵龜，是全球海龜密度最高的海島之一。無論是岸邊散步、浮潛，都能目睹野生綠蠵龜探頭呼吸的可愛畫面。</p>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800">野生綠蠵龜老家</h3>
+                        <p class="text-slate-500 leading-relaxed font-medium">全島棲息著超過 400 隻綠蠵龜，是全球海龜密度最高的海島之一。只要在岸邊散步或浮潛，就能親眼目睹牠們悠哉探頭呼吸的可愛畫面。</p>
                     </div>
                     <div class="mt-8 overflow-hidden rounded-2xl h-44 relative">
-                        <!-- 真實小琉球海龜生態照 -->
-                        <img src="https://images.unsplash.com/photo-1518467166-367ae630df20?auto=format&fit=crop&w=600&q=80" alt="共游綠蠵龜" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onerror="handleImageError(this, '綠蠵龜共游', '🐢')" onclick="openLightbox(this.src, '與綠蠵龜共游', '小琉球擁有超過數百隻綠蠵龜，在遵守生態規定的情況下可與之共游。')">
+                        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80" alt="共游綠蠵龜" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '野生綠蠵龜生態', '小琉球是全球極少數能如此輕易在近海與海龜共游的聖地。')">
                     </div>
                 </div>
                 <!-- 特色卡 3 -->
@@ -269,35 +277,165 @@
                         <div class="w-16 h-16 bg-gradient-to-br from-sky-400 to-indigo-500 rounded-2xl flex items-center justify-center text-white text-3xl mb-8 shadow-md shadow-sky-500/10 group-hover:scale-110 transition-transform">
                             <i class="fa-solid fa-motorcycle"></i>
                         </div>
-                        <h3 class="text-2xl font-black mb-4 text-slate-800">30分鐘極速環島</h3>
-                        <p class="text-slate-500 leading-relaxed font-medium">總面積僅 6.8 平方公里。租輛機車，只需 30-40 分鐘即可繞島一圈，景點密集，隨停隨拍，是最自由、完全無交通焦慮的島嶼旅程。</p>
+                        <h3 class="text-2xl font-black mb-4 text-slate-800">30分鐘輕鬆環島</h3>
+                        <p class="text-slate-500 leading-relaxed font-medium">總面積僅 6.8 平方公里。租輛機車，沿著環島公路只需 30-40 分鐘即可繞島一圈，景點密集，隨停隨拍，是零交通焦慮的純放鬆旅程。</p>
                     </div>
                     <div class="mt-8 overflow-hidden rounded-2xl h-44 relative">
-                        <!-- 機車環島真實海濱小路照 -->
-                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="小琉球海岸公路機車旅行" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '小琉球環島海岸小徑', '租一輛環保的電動機車，騎乘在無邊際的海岸小路上吹風，是小琉球最經典的享受。')">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80" alt="小琉球海岸公路機車旅行" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '小琉球環島公路', '騎著電動機車吹海風，沒有紅綠燈的繁雜，只有一望無際的蔚藍大海。')">
                     </div>
+                </div>
+            </div>
+
+            <!-- 生態保育專區 -->
+            <div class="bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-3xl p-8 border border-emerald-500/25 flex flex-col lg:flex-row items-center gap-8">
+                <div class="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center text-white text-4xl flex-shrink-0">
+                    🐢
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-2xl font-black text-slate-800 mb-2 flex items-center gap-2">
+                        生態保護守則：觸摸海龜最高罰款 30 萬元！
+                    </h3>
+                    <p class="text-slate-600 font-medium leading-relaxed text-sm">
+                        小琉球海龜受《野生動物保育法》保護。為了守護這些海洋珍寶，在水下與海龜共游時請嚴格遵守<strong>「不觸摸、不追逐、不驚擾、保持3公尺安全距離」</strong>。任何觸摸或挑釁行為均屬違法，最高可面臨 1 年有期徒刑並處以新台幣 <strong>6 萬至 30 萬元罰鍰</strong>。此外，請拒絕使用非物理性的化學防曬乳，守護這片脆弱且美麗的珊瑚礁。
+                    </p>
+                </div>
+                <div class="flex-shrink-0">
+                    <span class="inline-block px-5 py-2 bg-emerald-500 text-white font-bold text-xs rounded-full uppercase tracking-wider shadow-md"><i class="fa-solid fa-gavel mr-1"></i> 保育法第 18 條</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精選行程規劃 (Itinerary) -->
+    <section id="itinerary" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-sky-500 font-bold tracking-wider text-sm uppercase bg-sky-50 px-4 py-1.5 rounded-full">行程懶人包</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-3 section-title">規劃您的完美海島行</h2>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">不知道該怎麼玩？我們為您規劃好最精華的時程路線，一鍵跟著走就對了！</p>
+            </div>
+
+            <!-- 行程選單頁籤 -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="itinerary-tab-btn active px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all bg-sky-500 text-white shadow-md shadow-sky-500/10" data-target="itinerary-1">
+                    1日精華極速線
+                </button>
+                <button class="itinerary-tab-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-600" data-target="itinerary-2">
+                    2天1夜經典熱門遊 (推薦)
+                </button>
+                <button class="itinerary-tab-btn px-6 py-3 rounded-full font-bold text-sm md:text-base transition-all bg-slate-100 text-slate-600 hover:bg-sky-50 hover:text-sky-600" data-target="itinerary-3">
+                    3天2夜深度生態慢活
+                </button>
+            </div>
+
+            <!-- 行程內容區 -->
+            <!-- 1日遊 -->
+            <div id="itinerary-1" class="itinerary-content grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <span class="text-xs bg-sky-500 text-white font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Morning 早上</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-3 mb-2">08:00 - 11:30 | 登島與拍照</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">從東港搭船出發，抵達白沙尾漁港取機車。首站直奔「花瓶岩」拍下經典打卡照，接著前往「美人洞」在望海亭俯瞰尋找浮出海面的綠蠵龜。</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <span class="text-xs bg-sky-500 text-white font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Noon & Afternoon 中午後</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-3 mb-2">12:00 - 15:30 | 特色美食與浮潛</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">中午享用「柴燒相思麵」，飯後吃「起司捲」與超萌「海龜燒」下午茶。下午參加「海龜共游浮潛體驗」，與溫馴的海龜在水下共舞。</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <span class="text-xs bg-sky-500 text-white font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Evening 傍晚</span>
+                    <h4 class="font-bold text-lg text-slate-800 mt-3 mb-2">16:00 - 18:00 | 秘境與賦歸</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed font-medium">前往「龍蝦洞」拍海蝕溝美照，隨後往「中澳沙灘」散步踩水，最後在碼頭買幾包香脆「麻花捲」當伴手禮，搭乘 17:30 或 18:00 的末班船回東港。</p>
+                </div>
+            </div>
+
+            <!-- 2日遊 -->
+            <div id="itinerary-2" class="itinerary-content hidden grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Day 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h3 class="text-2xl font-black text-sky-600 mb-6 flex items-center gap-2"><i class="fa-solid fa-calendar-day"></i> DAY 1：環島與日落微醺</h3>
+                    <div class="space-y-6 relative border-l-2 border-sky-200 pl-6 ml-2">
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">上午 | 蔚藍島嶼初體驗</h4>
+                            <p class="text-xs text-slate-500 mt-1">登島取車 -> 拜訪地標「花瓶岩」 -> 沿環島公路遊覽「美人洞風景區」尋找懸崖下海龜。</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">中午 | 在地風味大飽口福</h4>
+                            <p class="text-xs text-slate-500 mt-1">朝聖經典「相思麵」或「大福羊肉」，買好預約的「小蝌蚪起司捲」，前往民宿 check-in 稍作休息。</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">下午 | 森林密境與浪漫日落</h4>
+                            <p class="text-xs text-slate-500 mt-1">前往陰涼芬多精的「山豬溝步道」與驚險幽暗的「烏鬼洞」探險，傍晚在「落日亭」或「蛤板灣」踩沙看火紅落日。</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">夜晚 | 海島BBQ與星空酒吧</h4>
+                            <p class="text-xs text-slate-500 mt-1">享用海港BBQ自助燒烤，深夜前往「Sea Daze 沙灘酒吧」躺在沙灘椅上吹海風小酌微醺。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Day 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                    <h3 class="text-2xl font-black text-sky-600 mb-6 flex items-center gap-2"><i class="fa-solid fa-calendar-day"></i> DAY 2：海龜共游與秘境探險</h3>
+                    <div class="space-y-6 relative border-l-2 border-sky-200 pl-6 ml-2">
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">清晨 | 海上朝霞與古早早餐</h4>
+                            <p class="text-xs text-slate-500 mt-1">早起至「旭日亭」看海上日出，接著吃「洪媽媽早餐」朝聖爆漿黑糖賓士包與琉球粿。</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">上午 | 與綠蠵龜水下共遊</h4>
+                            <p class="text-xs text-slate-500 mt-1">參加專業「浮潛」或「體驗潛水」，由教練帶領在珊瑚礁間尋找超萌大海龜近距離共游拍照。</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">下午 | 網美秘境搜集</h4>
+                            <p class="text-xs text-slate-500 mt-1">前往「網美老木」拍空靈海景照，走訪「龍蝦洞」觀賞海蝕溝，並享用「芒果雪花冰」消暑。</p>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute -left-9 top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-white"></span>
+                            <h4 class="font-bold text-slate-800 text-base">傍晚 | 挑選伴手禮愉快歸航</h4>
+                            <p class="text-xs text-slate-500 mt-1">回程購買手工麻花捲伴手禮，至白沙港還車，搭船告別小琉球。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3日遊 -->
+            <div id="itinerary-3" class="itinerary-content hidden grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-black text-lg text-sky-600 mb-4 flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">1</span> 第一天：慢活踏浪與日落</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">上午登島取車 check-in 民宿。中午享用熱炒海鮮。下午騎車慢遊「美人洞」與「花瓶岩」海岸，黃昏時安排「落日亭」看晚霞。晚間吃海島燒烤，睡前去「白燈塔」仰望璀璨零光害的銀河星空。</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-black text-lg text-sky-600 mb-4 flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">2</span> 第二天：海洋體驗與潮間帶</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">清晨吃古早味早餐，隨後挑戰刺激的「SUP 立槳」或「水肺體驗潛水」。下午享用爆量「芒果雪花冰」，配合退潮時間參加「潮間帶生態導覽」，尋找珍奇海膽與海參。夜晚造訪露天「冰郎酒吧」跟在地教練暢聊。</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <h4 class="font-black text-lg text-sky-600 mb-4 flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">3</span> 第三天：秘境巡禮與名產採購</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">清晨至「旭日亭」迎接壯觀日出，上午沿著濱海堤防尋找「網美老木」與「龍蝦洞海蝕壺穴」。中午品嚐在地羊肉湯。下午在特色文創小店尋找海龜周邊商品，買齊手工麻花捲後返回本島。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 互動式小琉球地圖 -->
-    <section id="interactive-map" class="py-24 bg-white relative">
+    <section id="interactive-map" class="py-24 bg-slate-50 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-sky-500 font-bold tracking-wider text-sm uppercase bg-sky-50 px-4 py-1.5 rounded-full">探索各個角落</span>
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-3 section-title">互動式島嶼導覽地圖</h2>
-                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">點擊下方地圖中的探索座標點，立即預覽每個景點的真實風貌與秘境攻略！</p>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">點擊左側地圖中的錨點標記，右側卡片即時同步該景點的真實風貌與私房攻略！</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <!-- SVG 手繪互動地圖 (7/12 width) -->
-                <div class="lg:col-span-7 bg-slate-50 p-6 md:p-10 rounded-3xl border border-slate-100 flex items-center justify-center shadow-inner relative overflow-hidden">
-                    <!-- 海浪背景紋理 -->
-                    <div class="absolute inset-0 bg-cover bg-center opacity-5 pointer-events-none" style="background-image: url('https://placehold.co/1x1/000000/000000?text=')"></div>
-                    
+                <div class="lg:col-span-7 bg-white p-6 md:p-8 rounded-3xl border border-slate-200/60 flex items-center justify-center shadow-lg relative overflow-hidden">
                     <svg viewBox="0 0 800 600" class="w-full h-auto max-w-2xl drop-shadow-2xl select-none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- 島嶼本體（使用平滑多邊形勾勒小琉球形狀） -->
+                        <!-- 島嶼本體 -->
                         <path d="M 220 180 C 290 120, 420 130, 520 170 C 620 210, 680 320, 650 400 C 620 460, 520 520, 430 530 C 350 540, 260 520, 200 460 C 140 400, 150 240, 220 180 Z" fill="url(#islandGrad)" stroke="#14b8a6" stroke-width="4" stroke-linejoin="round" class="transition-all duration-300"></path>
                         
                         <!-- 漸層定義 -->
@@ -313,7 +451,7 @@
                         <path d="M 580 480 Q 620 460, 660 480 T 740 480" fill="none" stroke="#bae6fd" stroke-width="2" class="opacity-40"></path>
                         
                         <!-- 標示北箭頭 -->
-                        <g transform="translate(700, 80)">
+                        <g transform="translate(720, 80)">
                             <circle cx="0" cy="0" r="25" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"></circle>
                             <line x1="0" y1="-15" x2="0" y2="15" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"></line>
                             <text x="-5" y="-18" font-size="12" font-weight="bold" fill="#0ea5e9">N</text>
@@ -322,65 +460,64 @@
                         <!-- 地圖探索座標錨點 -->
                         <!-- 1. 花瓶岩 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(1, this)" transform="translate(380, 160)">
-                            <circle cx="0" cy="0" r="20" class="fill-white/80 stroke-sky-500 map-pin-pulse" stroke-width="4"></circle>
+                            <circle cx="0" cy="0" r="20" class="fill-white/90 stroke-sky-500 map-pin-pulse" stroke-width="4"></circle>
                             <circle cx="0" cy="0" r="6" fill="#0ea5e9"></circle>
-                            <text x="12" y="5" font-size="14" font-weight="900" fill="#0f172a" class="bg-white px-1">花瓶岩</text>
+                            <text x="14" y="5" font-size="14" font-weight="900" fill="#0f172a">花瓶岩</text>
                         </g>
                         <!-- 2. 美人洞 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(2, this)" transform="translate(260, 200)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
-                            <text x="12" y="5" font-size="14" font-weight="bold" fill="#334155">美人洞</text>
+                            <text x="14" y="5" font-size="14" font-weight="bold" fill="#334155">美人洞</text>
                         </g>
                         <!-- 3. 山豬溝 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(3, this)" transform="translate(200, 320)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
                             <text x="-65" y="5" font-size="14" font-weight="bold" fill="#334155">山豬溝</text>
                         </g>
                         <!-- 4. 烏鬼洞 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(4, this)" transform="translate(220, 420)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
                             <text x="-65" y="5" font-size="14" font-weight="bold" fill="#334155">烏鬼洞</text>
                         </g>
                         <!-- 5. 落日亭 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(5, this)" transform="translate(270, 490)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
                             <text x="-15" y="24" font-size="14" font-weight="bold" fill="#334155">落日亭</text>
                         </g>
                         <!-- 6. 網美老木 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(6, this)" transform="translate(580, 240)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
-                            <text x="12" y="5" font-size="14" font-weight="bold" fill="#334155">網美老木</text>
+                            <text x="14" y="5" font-size="14" font-weight="bold" fill="#334155">網美老木</text>
                         </g>
                         <!-- 7. 龍蝦洞 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(7, this)" transform="translate(560, 180)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
-                            <text x="12" y="-10" font-size="14" font-weight="bold" fill="#334155">龍蝦洞</text>
+                            <text x="14" y="-10" font-size="14" font-weight="bold" fill="#334155">龍蝦洞</text>
                         </g>
                         <!-- 8. 白燈塔 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(8, this)" transform="translate(450, 390)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
-                            <text x="12" y="5" font-size="14" font-weight="bold" fill="#334155">白燈塔</text>
+                            <text x="14" y="5" font-size="14" font-weight="bold" fill="#334155">白燈塔</text>
                         </g>
                         <!-- 9. 旭日亭 -->
                         <g class="cursor-pointer map-pin" onclick="selectMapSpot(9, this)" transform="translate(550, 420)">
-                            <circle cx="0" cy="0" r="14" class="fill-white/80 stroke-sky-500" stroke-width="2"></circle>
+                            <circle cx="0" cy="0" r="14" class="fill-white/90 stroke-sky-500" stroke-width="2"></circle>
                             <circle cx="0" cy="0" r="5" fill="#0ea5e9"></circle>
-                            <text x="12" y="5" font-size="14" font-weight="bold" fill="#334155">旭日亭</text>
+                            <text x="14" y="5" font-size="14" font-weight="bold" fill="#334155">旭日亭</text>
                         </g>
                     </svg>
                 </div>
 
                 <!-- 景點動態展示詳情卡片 (5/12 width) -->
                 <div class="lg:col-span-5 h-full flex flex-col justify-center">
-                    <div id="spot-info-card" class="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-xl relative overflow-hidden transition-all duration-500">
-                        <!-- 卡片裝飾標籤 -->
+                    <div id="spot-info-card" class="bg-white border border-slate-200/60 rounded-3xl p-8 shadow-xl relative overflow-hidden transition-all duration-500">
                         <div class="absolute -top-3 -right-3 w-20 h-20 bg-sky-500/10 rounded-full blur-2xl"></div>
                         
                         <div class="flex justify-between items-center mb-6">
@@ -388,9 +525,9 @@
                             <span class="text-slate-400 font-semibold text-sm flex items-center gap-1"><i class="fa-solid fa-map-pin text-rose-500"></i> 地圖連動中</span>
                         </div>
 
-                        <!-- 景點真圖（具防破圖除錯功能） -->
+                        <!-- 景點圖片 -->
                         <div class="relative w-full h-60 rounded-2xl overflow-hidden mb-6 shadow-md border border-slate-100">
-                            <img id="spot-image" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80" alt="花瓶岩" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-zoom-in" onerror="handleImageError(this, '經典地標風景', '🗺️')" onclick="openLightbox(this.src, document.getElementById('spot-title').innerText, document.getElementById('spot-desc').innerText)">
+                            <img id="spot-image" src="images/flower_vase_rock.png" alt="花瓶岩" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src, document.getElementById('spot-title').innerText, document.getElementById('spot-desc').innerText)">
                         </div>
 
                         <h3 id="spot-title" class="text-3xl font-black text-slate-800 mb-4 flex items-center gap-3">花瓶岩</h3>
@@ -398,7 +535,7 @@
                             小琉球名氣最響亮的地標！由珊瑚礁隆起所形成的巨大岩石，因受到長期海水及風化侵蝕，造就出「頭大腳小」酷似花瓶的樣貌，頂部更自然長滿了灌木草叢。這裡是海龜覓食、共游的絕佳潛點！
                         </p>
 
-                        <div class="p-4 bg-white rounded-2xl border border-slate-100 flex items-center gap-4 shadow-sm">
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-4 shadow-inner">
                             <div class="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-500 text-lg flex-shrink-0">
                                 <i class="fa-solid fa-lightbulb"></i>
                             </div>
@@ -413,59 +550,116 @@
         </div>
     </section>
 
-    <!-- 交通住宿 -->
-    <section id="transport" class="py-24 bg-slate-50">
+    <!-- 交通與住宿比較表 -->
+    <section id="transport" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <span class="text-teal-500 font-bold tracking-wider text-sm uppercase bg-teal-50 px-4 py-1.5 rounded-full">行前交通與住宿攻略</span>
+                <span class="text-teal-500 font-bold tracking-wider text-sm uppercase bg-teal-50 px-4 py-1.5 rounded-full">交通船班與住宿攻略</span>
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-3 section-title">如何抵達與預訂住宿</h2>
-                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">從陸地交通、客船預訂，到島上電動機車出租，一步步幫你全盤搞定！</p>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">提供陸地接駁、客運航線比對與本島綠能交通，帶您輕鬆省心出發！</p>
+            </div>
+
+            <!-- 客運航線比較表 -->
+            <div class="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-200/60 shadow-md mb-12">
+                <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-circle-info text-sky-500"></i> 客運航線詳細比對表
+                </h3>
+                <div class="overflow-x-auto rounded-2xl border border-slate-200 bg-white">
+                    <table class="min-w-full divide-y divide-slate-200 text-left text-sm text-slate-600">
+                        <thead class="bg-slate-100 text-xs font-bold text-slate-700 uppercase tracking-wider">
+                            <tr>
+                                <th class="px-6 py-4">船班航線 (業者)</th>
+                                <th class="px-6 py-4">出發港口 / 抵達港口</th>
+                                <th class="px-6 py-4">單程航程時間</th>
+                                <th class="px-6 py-4">來回票價參考</th>
+                                <th class="px-6 py-4">班次頻率與特點</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-800">東琉線民營聯營 (東港)</td>
+                                <td class="px-6 py-4">東港碼頭 ➔ 白沙尾漁港</td>
+                                <td class="px-6 py-4">25 - 30 分鐘</td>
+                                <td class="px-6 py-4">全票約 NT$ 450</td>
+                                <td class="px-6 py-4">班次最密集（約30分鐘一班）。船體大且平穩。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-800">泰富航運 (民營)</td>
+                                <td class="px-6 py-4">東港碼頭 ➔ 白沙尾漁港</td>
+                                <td class="px-6 py-4">25 分鐘</td>
+                                <td class="px-6 py-4">全票約 NT$ 450</td>
+                                <td class="px-6 py-4">班次多，船隻新穎，提供良好的冷氣艙與無障礙空間。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-800">藍白航運 (民營)</td>
+                                <td class="px-6 py-4">東港碼頭 ➔ 白沙尾漁港</td>
+                                <td class="px-6 py-4">25 分鐘</td>
+                                <td class="px-6 py-4">全票約 NT$ 450</td>
+                                <td class="px-6 py-4">新興民營船，船體具流線科技感，速度快且平穩。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-800">大福航運 (鹽埔線)</td>
+                                <td class="px-6 py-4">鹽埔港 ➔ 大福漁港</td>
+                                <td class="px-6 py-4">25 - 30 分鐘</td>
+                                <td class="px-6 py-4">全票約 NT$ 450</td>
+                                <td class="px-6 py-4">避開東港排隊人潮的好選擇。抵達南側大福漁港。</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-slate-800">公營交通船</td>
+                                <td class="px-6 py-4">東港碼頭 ➔ 大福漁港</td>
+                                <td class="px-6 py-4">35 - 40 分鐘</td>
+                                <td class="px-6 py-4">全票約 NT$ 380</td>
+                                <td class="px-6 py-4">票價較便宜。班次固定（每日約5班），航速稍慢。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-xs text-slate-400 mt-4"><i class="fa-solid fa-asterisk"></i> 註：取票時需出示身分證或健保卡。多數民宿套裝行程皆已包含民營船來回船票。</p>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- 交通指引卡 -->
+                <!-- 陸地交通指引與低碳琉行杯 -->
                 <div class="space-y-8">
-                    <!-- 如何搭船 -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between group">
+                    <!-- 如何抵達東港碼頭 -->
+                    <div class="bg-slate-50 rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between group">
                         <div>
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-blue-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-500/10">
-                                    <i class="fa-solid fa-ship"></i>
+                                    <i class="fa-solid fa-bus"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-bold text-slate-800">1. 搭船抵達小琉球</h3>
-                                    <p class="text-sm text-slate-400">航程僅約25-30分鐘</p>
+                                    <h3 class="text-2xl font-bold text-slate-800">1. 本島到東港碼頭交通</h3>
+                                    <p class="text-sm text-slate-400">高鐵左營站出發最方便</p>
                                 </div>
                             </div>
                             <p class="text-slate-500 leading-relaxed font-medium mb-6">
-                                前往小琉球必須於<strong>屏東東港碼頭</strong>或<strong>鹽埔碼頭</strong>搭乘客船。可以選擇東琉線、泰富、藍白等優質民營船（班次極多），如果從高鐵左營站出發，推薦直接轉乘<strong>「台灣好行大鵬灣琉球線 (9127-D)」</strong>直達碼頭，非常快速。
+                                從高鐵左營站出發，推薦搭乘<strong>「台灣好行大鵬灣琉球線 (9127-D)」</strong>快捷公車，直接在東港碼頭站下車，車程約 50 分鐘。若多人同行，亦可選擇搭乘共乘計程車（約每人 NT$ 150-200），直達港口。
                             </p>
                         </div>
                         <div class="overflow-hidden rounded-2xl h-48 relative">
-                            <!-- 真實客運/渡輪照 -->
-                            <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=600&q=80" alt="東港往小琉球渡輪" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '往小琉球的交通船', '由東港碼頭出發至白沙尾漁港，船程約25-30分鐘，客船極為平穩現代化。')">
+                            <img src="https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=600&q=80" alt="東港往小琉球渡輪" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '往小琉球的交通船', '由東港碼頭出發至白沙尾漁港，船程約25-30分鐘，民營客船速度飛快平穩。')">
                         </div>
                     </div>
 
-                    <!-- 島上機車出租 -->
-                    <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col justify-between group">
+                    <!-- 低碳島與琉行杯計畫 -->
+                    <div class="bg-emerald-500/5 rounded-3xl p-8 border border-emerald-500/20 shadow-sm flex flex-col justify-between group">
                         <div>
                             <div class="flex items-center gap-4 mb-6">
                                 <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-teal-500/10">
-                                    <i class="fa-solid fa-moped animate-bounce"></i>
+                                    <i class="fa-solid fa-mug-hot"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-2xl font-bold text-slate-800">2. 島上環保交通：租機車</h3>
-                                    <p class="text-sm text-slate-400">大推綠能環保電動車</p>
+                                    <h3 class="text-2xl font-bold text-slate-800">2. 琉行杯：免租金隨手減塑</h3>
+                                    <p class="text-sm text-slate-400">小琉球獨創環保杯共享系統</p>
                                 </div>
                             </div>
-                            <p class="text-slate-500 leading-relaxed font-medium mb-6">
-                                小琉球推崇綠能環保，下船後在碼頭周邊就有眾多機車行。<strong>強烈推薦租用電動機車 (如 Gogoro 或路得寶電動車)</strong>，能減少排煙與噪音污染。騎機車環島一圈僅需30分鐘，切記騎車時要配戴安全帽並安全行車喔。
+                            <p class="text-slate-600 leading-relaxed font-medium mb-6 text-sm">
+                                小琉球極力推行低碳減塑，島上許多飲料店與超商合作推出<strong>「琉行杯計畫」</strong>。旅人只需在合作店家透過掃描 QR Code 即可<strong>免費借用</strong>不銹鋼保溫杯購買飲料，喝完後可於全島任一合作據點（含碼頭）歸還，洗滌消毒過程嚴格。讓我們一起減少垃圾，留給海龜一片乾淨的海洋！
                             </p>
                         </div>
-                        <div class="overflow-hidden rounded-2xl h-48 relative">
-                            <!-- 真實島上機車照 -->
-                            <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80" alt="小琉球海濱機車出租" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '小琉球環島機車旅行', '下船後於港口即可快速取車。推薦預訂民宿套裝行程，通常已包含24小時的機車租借。')">
+                        <div class="p-4 bg-emerald-500/10 rounded-2xl text-xs text-emerald-800 flex items-start gap-2 border border-emerald-500/20">
+                            <i class="fa-solid fa-leaf mt-0.5"></i>
+                            <span>除了租借「琉行杯」外，島上租機車強烈建議指名<strong>「綠能電動機車」</strong>，在島上騎乘安靜、無碳排放，一同為海島環保盡一份心。</span>
                         </div>
                     </div>
                 </div>
@@ -512,30 +706,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 p-4 rounded-2xl bg-sky-50 border border-sky-100 text-xs text-sky-800 flex items-start gap-2">
-                        <i class="fa-solid fa-circle-info mt-0.5"></i>
-                        <span>強烈建議在訂房時，直接選擇民宿提供的<strong>「套裝行程」</strong>。套裝行程通常已一併包辦來回船票、島上機車租借、潮間帶生態導覽與夜間觀星，不僅價格更優惠，也省去了分開訂票的麻煩！</span>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 經典必訪景點 -->
-    <section id="attractions" class="py-24 bg-white">
+    <section id="attractions" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-sky-500 font-bold tracking-wider text-sm uppercase bg-sky-50 px-4 py-1.5 rounded-full">景點懶人包</span>
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-3 section-title">島嶼必踩經典景點</h2>
-                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">第一次造訪小琉球必踩的經典自然風貌，海蝕景觀鬼斧神工。</p>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">第一次造訪小琉球必踩的四大自然奇觀，海蝕地質鬼斧神工。</p>
             </div>
 
-            <!-- 橫向滑動景點卡片（電腦與手機通用） -->
+            <!-- 橫向滑動景點卡片 -->
             <div class="flex overflow-x-auto gap-8 pb-8 hide-scrollbar snap-x snap-mandatory">
                 <!-- 1. 花瓶岩 -->
-                <div class="min-w-[320px] md:min-w-[380px] bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover snap-center group">
+                <div class="min-w-[320px] md:min-w-[380px] bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover snap-center group">
                     <div class="relative h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=600&q=80" alt="花瓶石/花瓶岩" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '地標・花瓶岩', '佇立於靈山寺旁的著名海蝕地質。因為海面下綠色海藻茂盛，也是海龜最愛來覓食游動的點。')">
+                        <img src="images/flower_vase_rock.png" alt="花瓶岩" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '地標・花瓶岩', '佇立於靈山寺旁的著名海蝕地質。因為海面下綠色海藻茂盛，也是海龜最愛來覓食游動的點。')">
                         <span class="absolute top-4 right-4 px-3 py-1 bg-white/80 backdrop-blur text-xs font-bold text-slate-800 rounded-full"><i class="fa-solid fa-camera text-sky-500"></i> 地標打卡點</span>
                     </div>
                     <div class="p-6">
@@ -551,7 +741,7 @@
                 </div>
 
                 <!-- 2. 美人洞 -->
-                <div class="min-w-[320px] md:min-w-[380px] bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover snap-center group">
+                <div class="min-w-[320px] md:min-w-[380px] bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover snap-center group">
                     <div class="relative h-56 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="美人洞風景區" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '三大風景區・美人洞', '一旁設有著名望海亭，站在峭壁觀景台，能親眼俯瞰海面底下悠游的野生海龜。')">
                         <span class="absolute top-4 right-4 px-3 py-1 bg-white/80 backdrop-blur text-xs font-bold text-slate-800 rounded-full"><i class="fa-solid fa-ticket text-amber-500"></i> 風景區聯票</span>
@@ -569,7 +759,7 @@
                 </div>
 
                 <!-- 3. 山豬溝 -->
-                <div class="min-w-[320px] md:min-w-[380px] bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover snap-center group">
+                <div class="min-w-[320px] md:min-w-[380px] bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover snap-center group">
                     <div class="relative h-56 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" alt="山豬溝原始林" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '原始奇木步道・山豬溝', '充滿了老榕樹、綠意植物與奇石，走進去猶如來到宮崎駿電影中的魔法森林。')">
                         <span class="absolute top-4 right-4 px-3 py-1 bg-white/80 backdrop-blur text-xs font-bold text-slate-800 rounded-full"><i class="fa-solid fa-tree text-emerald-500"></i> 森林系祕境</span>
@@ -587,7 +777,7 @@
                 </div>
 
                 <!-- 4. 烏鬼洞 -->
-                <div class="min-w-[320px] md:min-w-[380px] bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover snap-center group">
+                <div class="min-w-[320px] md:min-w-[380px] bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover snap-center group">
                     <div class="relative h-56 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1507163546643-0b1e779a5585?auto=format&fit=crop&w=600&q=80" alt="烏鬼洞岩穴" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '探險地質・烏鬼洞', '一處極具神秘色彩與地學看點的天然石穴，出口連接著豁然開朗的驚濤海岸。')">
                         <span class="absolute top-4 right-4 px-3 py-1 bg-white/80 backdrop-blur text-xs font-bold text-slate-800 rounded-full"><i class="fa-solid fa-compass text-rose-500"></i> 地心探險</span>
@@ -595,7 +785,7 @@
                     <div class="p-6">
                         <h3 class="text-2xl font-black text-slate-800 mb-2">烏鬼洞地質奇觀</h3>
                         <p class="text-slate-500 text-sm leading-relaxed mb-4">
-                            以幽暗驚險、地形交錯複雜著稱的礁石洞穴。旅客能拿著手電筒，手腳並用穿梭於狹窄的巨岩裂縫間，充滿探險樂趣，洞外一旁則可聽濤海哭，震撼力十足。
+                            以幽暗驚險、地形交錯複雜著稱的礁石洞穴。旅客能手腳並用穿梭於狹窄的巨岩裂縫間，充滿探險樂趣，洞外一旁則可聽濤觀海，震撼力十足。
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span class="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-xs font-semibold">洞穴探秘</span>
@@ -609,7 +799,7 @@
     </section>
 
     <!-- 絕美日出夕陽景點 -->
-    <section class="py-24 bg-gradient-to-b from-white to-slate-50">
+    <section class="py-24 bg-gradient-to-b from-slate-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="text-amber-500 font-bold tracking-wider text-sm uppercase bg-amber-50 px-4 py-1.5 rounded-full">光影與星空</span>
@@ -620,13 +810,13 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- 日出景點 -->
                 <div class="group relative rounded-3xl overflow-hidden h-[420px] shadow-lg">
-                    <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1000&q=80" alt="小琉球旭日東昇" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" onclick="openLightbox(this.src, '旭日亭與中澳沙灘日出', '天空染上淡紫色與橘黃色彩，海水泛著萬道金光。早晨散步十分安靜。')">
+                    <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?auto=format&fit=crop&w=1000&q=80" alt="小琉球旭日東昇" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 cursor-zoom-in" onclick="openLightbox(this.src, '旭日亭與中澳沙灘日出', '天空染上淡裝與橘黃色彩，海水泛著萬道金光。早晨散步十分安靜。')">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent"></div>
                     <div class="absolute bottom-0 left-0 p-8 w-full">
                         <span class="bg-amber-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">🌅 Sunrise Spot</span>
                         <h3 class="text-3xl font-black text-white mb-3 flex items-center gap-2">旭日亭與中澳沙灘</h3>
                         <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                            小琉球東側海岸是迎新朝的第一排王位！站在旭日亭的懸崖木棧道，俯瞰曙光躍出海平線，或在寬敞溫柔的中澳白沙灘聽著微浪看粉紫色彩，都美得讓人摒息。
+                            小琉球東側海岸是迎新朝的第一排王位！站在旭日亭的懸崖木棧道，俯瞰曙光躍出海平線，或在寬敞溫柔的中澳白沙灘聽著微浪看粉紫色彩，都美得讓人屏息。
                         </p>
                     </div>
                 </div>
@@ -639,7 +829,7 @@
                         <span class="bg-rose-500 text-white text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">🌇 Sunset Spot</span>
                         <h3 class="text-3xl font-black text-white mb-3 flex items-center gap-2">浪漫落日亭與蛤板灣</h3>
                         <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                            西側是完美的黃金夕陽觀賞點。落日亭面臨無邊際的台灣海峽，橘紅色晚霞將整片大海徹底煮沸；蛤板灣（威尼斯沙灘）則能踩著潔白貝殼沙，看夕陽在潮水倒映下如鏡面般美麗。
+                            西側是完美的黃金夕陽觀賞點。落日亭面臨無邊際的台灣海峽，橘紅色晚霞將整片大海徹底染紅；蛤板灣（威尼斯沙灘）則能踩著潔白貝殼沙，看夕陽在潮水倒映下如鏡面般美麗。
                         </p>
                     </div>
                 </div>
@@ -653,7 +843,7 @@
             <div class="text-center mb-16">
                 <span class="text-orange-500 font-bold tracking-wider text-sm uppercase bg-orange-100/60 px-4 py-1.5 rounded-full">吃貨地圖</span>
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-3 section-title">老饕極力激推美食</h2>
-                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">從傳承手作小吃到解暑芒果冰，帶您一口吃遍小琉球的經典美味！</p>
+                <p class="mt-4 text-lg text-slate-500 max-w-2xl mx-auto font-medium">從手炒特色小吃到解暑水果冰，帶您一口吃遍小琉球的經典美味！</p>
             </div>
 
             <!-- 美食分類頁籤切換按鈕 -->
@@ -673,15 +863,15 @@
             <!-- 1. 經典排隊 -->
             <div id="must-eat" class="food-content grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 經典必吃 1：麻花捲 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1621996346565-e3bb64d8575a?auto=format&fit=crop&w=600&q=80" alt="小琉球手工麻花捲" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '手工香脆麻花捲', '小琉球的經典伴手禮！與本島厚重口感不同，小琉球的更加細長酥脆、完全不黏牙。')">
+                            <img src="images/mahua_rolls.png" alt="小琉球手工麻花捲" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '手工香脆麻花捲', '小琉球的經典伴手禮！與本島厚重口感不同，小琉球的更加細長酥脆、完全不黏牙。')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">香脆手工麻花捲</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                小琉球最家喻戶曉的伴手禮。與一般本島大而硬的麻花捲不同，小琉球的麻花細直香脆，香甜不油膩，備有黑糖、原味、芝麻、梅子和海苔等多種超刷嘴口味。
+                                小琉球最家喻戶曉的伴手禮。與一般本島大而硬的麻花捲不同，小琉球的麻花細直香脆，香甜不油膩，備有黑糖、原味、芝麻、梅子等多種口味。
                             </p>
                         </div>
                     </div>
@@ -691,33 +881,33 @@
                 </div>
 
                 <!-- 經典必吃 2：起司捲 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=600&q=80" alt="小蝌蚪起司捲" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '邪惡牽絲起司捲', '煎至酥黃的金黃外皮裹著濃稠到會爆漿、拉絲幾十公分的爆量起司！下午茶的最佳邪惡救贖。')">
+                            <img src="images/cheese_rolls.png" alt="起司捲" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '邪惡牽絲起司捲', '煎至酥黃的金黃外皮裹著濃稠到會爆漿、拉絲幾十公分的爆量起司！下午茶的最佳邪惡救贖。')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">爆漿拉絲起司捲</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                網路上瘋狂排隊的人氣小吃！現點現包，將外皮炸至金黃酥脆，裡面包裹著鮮美可口的鮪魚、牛肉或培根，搭配多到犯規的香濃摩佐拉起司，一口咬下瞬間拉絲爆漿！
+                                網路上瘋狂排隊的人氣小吃！現點現包，將外皮炸至金黃酥脆，裡面包裹著鮮美可口的牛肉、鮪魚或培根，搭配多到犯規的香濃摩佐拉起司，一口咬下瞬間拉絲！
                             </p>
                         </div>
                     </div>
                     <div class="px-6 pb-6 pt-2 border-t border-slate-50">
-                        <span class="text-xs font-bold text-orange-500"><i class="fa-solid fa-store mr-1"></i> 推薦名店：小蝌蚪起司餅（需早上預約）、YOYO起司捲</span>
+                        <span class="text-xs font-bold text-orange-500"><i class="fa-solid fa-store mr-1"></i> 推薦名店：小蝌蚪起司餅（需早上電話預約）、YOYO起司捲</span>
                     </div>
                 </div>
 
                 <!-- 經典必吃 3：海龜燒 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=600&q=80" alt="萌趣海龜燒" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '萌趣海龜燒', '香噴噴的雞蛋糕塑造成手掌大的小海龜造型，內餡爆漿，十分適合在海邊捧著拍照。')">
+                            <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80" alt="海龜燒" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '超萌特產海龜燒', '香噴噴的雞蛋糕塑造成手掌大的小海龜造型，內有卡士達、起司、黑糖珍珠等內餡，非常適合在海邊捧著拍照。')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">超萌特產海龜燒</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                來小琉球絕對要拍照打卡的代表甜點！將鬆軟充滿奶香的雞蛋糕外殼鑄造成超級Q萌的小海龜模樣。內餡有卡士達、起司、巧克力等多樣甜蜜口味，好拍又美味！
+                                來小琉球絕對要拍照打卡的代表甜點！將鬆軟充滿奶香的雞蛋糕外殼鑄造成超級Q萌的小海龜模樣。內餡有多樣甜蜜口味，好拍又美味！
                             </p>
                         </div>
                     </div>
@@ -730,15 +920,15 @@
             <!-- 2. 在地私房 -->
             <div id="secret-food" class="food-content hidden grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 私房 1：相思麵 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" alt="古早柴燒相思麵" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '古早柴燒相思麵', '利用古老灶台與柴火燉煮的老肉燥乾麵，麵條彈牙，淋上一點特製辣椒醬簡直是絕配！')">
+                            <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80" alt="古早柴燒相思麵" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '古早柴燒相思麵', '利用古老紅磚灶台與漂流木柴火燉煮的老肉燥乾麵，麵條彈牙，淋上一點特製自製辣椒醬簡直是絕配！')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">柴燒灶台相思麵</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                在地傳承、讓人魂牽夢縈的家鄉古早味。店內最引人注目的是依然遵循傳統、以木柴點火的紅磚灶台。特製的滷肉燥香醇濃郁，配上彈牙黃麵，辣醬更是一絕！
+                                在地傳承、讓人魂牽夢縈的古早味。店內遵循傳統以木柴點火的紅磚灶台燉煮。特製的肉燥香醇濃郁，配上彈牙黃麵，自製辣醬更是一絕！
                             </p>
                         </div>
                     </div>
@@ -748,15 +938,15 @@
                 </div>
 
                 <!-- 私房 2：大福羊肉 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80" alt="大福羊肉海鮮店" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '大福羊肉海鮮熱炒', '雖然身處海島，這裡卻有頂級無騷味的羊排酥與香濃羊肉湯，更是聚餐的首選。')">
+                            <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=600&q=80" alt="大福羊肉海鮮店" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '大福羊肉海鮮熱炒', '雖然身處海島，這裡卻有頂級無騷味的羊排酥與香濃羊肉湯，更是聚餐的首選。')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">大福羊肉海鮮熱炒</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                在地聚餐人氣首選！誰說在海島只能吃海鮮？大福羊肉最招牌的「羊排酥」外焦內嫩，毫無一絲羶味。同時提供當日新鮮漁獲熱炒，價格超級親民佛心。
+                                在地聚餐人氣首選！誰說在海島只能吃海鮮？大福羊肉招牌的「羊排酥」外焦內嫩，毫無騷味。同時提供當日新鮮漁獲熱炒，價格超級親民。
                             </p>
                         </div>
                     </div>
@@ -766,15 +956,15 @@
                 </div>
 
                 <!-- 私房 3：洪媽媽早餐 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" alt="洪媽媽早餐古早味" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '洪媽媽早餐特產', '招牌「琉球粿」與香甜的「黑糖賓士包」是必吃經典，早上5:30就大排長龍！')">
+                            <img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80" alt="洪媽媽早餐古早味" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '洪媽媽早餐特產', '招牌「琉球粿」與香甜的「黑糖賓士包」是必吃經典，早上5:30就大排長龍！')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">洪媽媽傳統灶台早餐</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                超過三十年的超高人氣在地老早餐店！必吃只有小琉球才有的手工「南瓜琉球粿」、酥香「蔥油條」，以及一口咬下會爆出濃香黑糖漿的「黑糖賓士包」。
+                                超過三十年的超高人氣在地老早餐店！必吃只有小琉球才有的手工「南瓜琉球粿」、酥香「蔥油條」，以及會爆出黑糖漿的「黑糖賓士包」。
                             </p>
                         </div>
                     </div>
@@ -787,15 +977,15 @@
             <!-- 3. 冰品甜點 -->
             <div id="dessert" class="food-content hidden grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 冰品 1：雪花冰 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?auto=format&fit=crop&w=600&q=80" alt="焦糖腰果雪花冰" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '招牌焦糖腰果雪花冰', '細緻如棉絮的雪花冰，上頭灑滿了手炒焦糖堅果與爽脆腰果，口感與甜香恰到好處。')">
+                            <img src="https://images.unsplash.com/photo-1501443715855-61334737da80?auto=format&fit=crop&w=600&q=80" alt="焦糖腰果雪花冰" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '招牌焦糖腰果雪花冰', '細緻如棉絮的雪花冰，上頭灑滿了手炒焦糖堅果與雙脆腰果，口感與甜香恰到好處。')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">冰箱冰舖：焦糖腰果雪花冰</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                小琉球最夯的雪花冰老店！招牌冰品「焦糖腰果雪花冰」底層冰晶細緻如綿，淋上濃郁手熬焦糖蜜，上頭覆蓋滿滿的低溫慢烘香脆腰果，消暑首選！
+                                小琉球最夯的雪花冰老店！招牌冰品「焦糖腰果雪花冰」底層冰晶細緻，淋上濃郁手熬焦糖蜜，上頭覆蓋滿滿的低溫慢烘香脆腰果，消暑首選！
                             </p>
                         </div>
                     </div>
@@ -805,15 +995,15 @@
                 </div>
 
                 <!-- 冰品 2：鮮芒果冰 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
-                            <img src="https://images.unsplash.com/photo-1501443715855-61334737da80?auto=format&fit=crop&w=600&q=80" alt="鮮芒果雪花冰" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '夏季限定鮮芒果雪花冰', '黃澄澄的當季多汁鮮芒果肉，疊加在滿滿的煉乳冰堆上，令人完全無法抗拒。')">
+                            <img src="https://images.unsplash.com/photo-1511140973288-19bf21d7e7e1?auto=format&fit=crop&w=600&q=80" alt="鮮芒果雪花冰" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '夏季限定鮮芒果雪花冰', '黃澄澄的當季多汁鮮芒果肉，疊加在滿滿的煉乳冰堆上，令人完全無法抗拒。')">
                         </div>
                         <div class="p-6">
                             <h4 class="font-bold text-xl text-slate-800 mb-2">當季鮮甜芒果爆量冰</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
-                                來到南台灣海島，怎麼能不吃芒果？使用頂級熟成愛文芒果，每一份都是現點現切。滿得溢出來的黃金芒果肉堆疊，再加上一球香草冰淇淋與香甜煉乳！
+                                來到南台灣海島，必吃芒果冰！使用頂級熟成愛文芒果，現點現切。滿得溢出來的黃金芒果肉堆疊，再加上一球香草冰淇淋與香甜煉乳！
                             </p>
                         </div>
                     </div>
@@ -823,13 +1013,13 @@
                 </div>
 
                 <!-- 冰品 3：漸層果汁 -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm card-hover group flex flex-col justify-between">
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm card-hover group flex flex-col justify-between">
                     <div>
                         <div class="relative h-48 overflow-hidden bg-slate-100">
                             <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=600&q=80" alt="網美漸層鮮果汁" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in" onclick="openLightbox(this.src, '網美漸層鮮榨果汁', '用在地水果如火龍果、鳳梨、檸檬鮮榨調配，呈現繽紛彩虹漸層，是拍照的最佳道具。')">
                         </div>
                         <div class="p-6">
-                            <h4 class="font-bold text-xl text-slate-800 mb-2">海島微風漸層果汁氣泡飲</h4>
+                            <h4 class="font-bold text-xl text-slate-800 mb-2">海島微風漸層氣泡飲</h4>
                             <p class="text-slate-500 text-sm leading-relaxed">
                                 專為炎熱天氣打造的夢幻高顏值果汁。使用屏東在地特產火龍果、新鮮芒果與芭樂，經過完美比重與慢榨，呈現美麗如海島落日般的漸層色彩！
                             </p>
@@ -859,26 +1049,26 @@
                         <i class="fa-solid fa-water text-sky-500"></i> 白晝：乘風破浪
                     </h3>
                     
-                    <div class="flex gap-4 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1682687220063-4742bd7fd538?auto=format&fit=crop&w=1200&q=80', '小琉球浮潛與海龜同游', '教練會在身旁帶領引導，即使不會游泳的旅人也能趴在浮板上輕鬆欣賞海龜悠遊海底。')">
+                    <div class="flex gap-4 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80', '小琉球浮潛與海龜同游', '教練會在身旁帶領引導，即使不會游泳的旅人也能趴在浮板上輕鬆欣賞海龜悠遊海底。')">
                         <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center text-4xl flex-shrink-0 group-hover:scale-110 transition-transform shadow">
                             🤿
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-800 text-lg">免執照：浮潛與水肺體驗潛水</h4>
+                            <h4 class="font-bold text-slate-800 text-lg">浮潛與水肺體驗潛水 (免證照)</h4>
                             <p class="text-sm text-slate-500 mt-1 leading-relaxed">
-                                在專業教練細心帶領下一對一潛入水下。在完全無重力感的澄澈海水中近距離欣賞壯觀珊瑚群，看厚實可愛的綠蠵龜緩緩在您身側游過！
+                                在專業教練細心一對一帶領下潛入水下。在澄澈海水中近距離欣賞壯觀珊瑚群，看厚實可愛的綠蠵龜緩緩在您身側游過！
                             </p>
                         </div>
                     </div>
 
-                    <div class="flex gap-4 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1517022812141-23620dba5c23?auto=format&fit=crop&w=1200&q=80', 'SUP立式划槳與獨木舟', '特別推薦預訂日出或夕陽團，在耀眼如碎金的海面上划槳前行，拍出最空靈的人生大片。')">
+                    <div class="flex gap-4 p-4 rounded-2xl bg-slate-50 hover:bg-slate-100/80 transition-colors group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1500930287596-c1ecadc07419?auto=format&fit=crop&w=1200&q=80', 'SUP立式划槳與獨木舟', '特別推薦預訂日出或夕陽團，在耀眼如碎金的海面上划槳前行，拍出最空靈的人生大片。')">
                         <div class="w-20 h-20 bg-teal-100 rounded-full flex items-center justify-center text-4xl flex-shrink-0 group-hover:scale-110 transition-transform shadow">
                             🛶
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-800 text-lg">超人氣：SUP立槳與透明獨木舟</h4>
+                            <h4 class="font-bold text-slate-800 text-lg">SUP立槳與透明獨木舟</h4>
                             <p class="text-sm text-slate-500 mt-1 leading-relaxed">
-                                近年最風靡的海島運動。推薦報名「日落黃金SUP團」，坐在板上悠閒看餘暉把海水染成金色。或是划著全透明獨木舟，低頭直接透視美麗的海底魚群！
+                                近年最風靡的運動。推薦報名「日落黃金SUP團」，坐在板上悠閒看餘暉把海水染成金色。或是划著全透明獨木舟，低頭直接透視美麗的海底魚群！
                             </p>
                         </div>
                     </div>
@@ -890,7 +1080,7 @@
                         <i class="fa-solid fa-martini-glass-citrus text-indigo-500"></i> 夜幕：微醺海風
                     </h3>
                     <p class="text-slate-500 text-sm font-medium mb-4">
-                        小琉球的夜生活多姿多采！除了夜觀潮間帶、陸蟹探索外，這裡擁有全台密度最高、最具特色的海島露天精緻酒吧：
+                        小琉球的夜生活多姿多采！除了夜觀潮間帶、陸蟹探索外，這裡擁有全台密度最高、最具特色的露天精緻酒吧：
                     </p>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -899,7 +1089,7 @@
                             <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-rose-500"></i> 三民路308號</p>
                             <p class="text-xs text-slate-500 leading-relaxed">精釀啤酒與島嶼特色調酒聖地，老闆本身是熱心幽默的衝浪教練，氣氛自在熱絡。</p>
                         </div>
-                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=600&q=80', 'Sea Daze 網美沙灘酒吧', '完全露天的戶外沙灘風格！鋪滿潔白細沙與慵懶吊床，伴隨浪花聲與微風喝酒，超級解壓。')">
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-100 card-hover cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=600&q=80', 'Sea Daze 網美沙灘酒吧', '完全露天的戶外沙灘風格！鋪滿潔白細沙與慵懶吊床，伴隨浪花聲與微風喝酒，超級解壓。')">
                             <h4 class="font-black text-slate-800 text-base mb-1">Sea Daze 沙灘野營吧</h4>
                             <p class="text-[11px] text-slate-400 mb-2"><i class="fa-solid fa-location-dot text-rose-500"></i> 肚仔坪路13號</p>
                             <p class="text-xs text-slate-500 leading-relaxed">全露天波西米亞風！地上鋪滿細沙設有露天營火。一邊聽海風一邊喝酒，彷彿一秒飛出國度假！</p>
@@ -921,47 +1111,47 @@
             <div class="text-center mb-20">
                 <span class="text-rose-400 font-bold tracking-wider text-sm uppercase bg-rose-950/40 px-4 py-1.5 rounded-full border border-rose-900/30">不公開秘境解密</span>
                 <h2 class="text-4xl md:text-5xl font-black text-white mt-3 section-title">島嶼深處的不為人知秘境</h2>
-                <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto font-medium">避開熙攘人潮，跟著本指南探尋只有在地人、深度潛水員才知道的浪漫角落。</p>
+                <p class="mt-4 text-lg text-slate-400 max-w-2xl mx-auto font-medium">避開熙攘人潮，跟著本指南探尋只有在地人才知道的浪漫角落。</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- 秘境 1 -->
-                <div class="group relative rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1473116763269-255ea742f5f6?auto=format&fit=crop&w=1200&q=80', '浪漫巨作：網美老木', '位於大福漁港旁的礁岩岸。一根被狂風巨浪沖上礁岩、恰好卡在石縫中的天然漂流木，背後是波瀾壯闊的湛藍海面。')">
-                    <img src="https://images.unsplash.com/photo-1473116763269-255ea742f5f6?auto=format&fit=crop&w=800&q=80" alt="網美老木漂流木" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="handleImageError(this, '網美老木漂流木', '🪵')">
+                <div class="group relative rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl cursor-pointer" onclick="openLightbox('images/wangmei_laomu.png', '浪漫巨作：網美老木', '位於大福漁港旁的礁岩岸。一根被風浪沖上礁岩、恰好卡在石縫中的天然漂流木，背後是波瀾壯闊的湛藍海面。')">
+                    <img src="images/wangmei_laomu.png" alt="網美老木" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent flex flex-col justify-end p-8">
                         <div class="transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
                             <span class="bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider mb-2 inline-block">Secret 01</span>
                             <h3 class="text-2xl font-black text-white mb-2">大福海岸・網美老木</h3>
                             <p class="text-slate-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 leading-relaxed">
-                                從大福漁港沿著海堤徒步走約5分鐘。浪花衝擊上岸形成的漂流木卡在天然珊瑚礁石間，像一張無敵的海景躺椅，是IG上最火紅的空靈拍攝點。
+                                從大福漁港沿著海堤徒步走約5分鐘。浪花衝擊上岸形成的漂流木卡在珊瑚礁石間，像一張海景躺椅，是IG上最火紅的空靈拍攝點。
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 秘境 2 -->
-                <div class="group relative rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1468413253725-0d5181026217?auto=format&fit=crop&w=1200&q=80', '龍蝦洞海蝕溝絕境', '這裡水質清澈、常有海龜於海蝕溝中游動覓食。在退潮時沿著一旁的小沙地步行走入，能近距離看巨浪拍打在海蝕大岩壁上的大自然震撼。')">
-                    <img src="https://images.unsplash.com/photo-1468413253725-0d5181026217?auto=format&fit=crop&w=800&q=80" alt="龍蝦洞海蝕溝" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="handleImageError(this, '龍蝦洞海蝕溝', '🦀')">
+                <div class="group relative rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl cursor-pointer" onclick="openLightbox('images/lobster_cave.png', '龍蝦洞海蝕溝絕境', '這裡水質清澈、常有海龜於海蝕溝中游動覓食。在退潮時沿著一旁的小沙地步行走入，能近距離看巨浪拍打在海蝕大岩壁上的大自然震撼。')">
+                    <img src="images/lobster_cave.png" alt="龍蝦洞" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent flex flex-col justify-end p-8">
                         <div class="transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
                             <span class="bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider mb-2 inline-block">Secret 02</span>
                             <h3 class="text-2xl font-black text-white mb-2">龍蝦洞壺穴海蝕溝</h3>
                             <p class="text-slate-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 leading-relaxed">
-                                發達的珊瑚礁海岸受到海水長年劇烈侵蝕，形成無數深邃海蝕溝。由岩石下方向上看，蔚藍天空與兩側巨大珊瑚巨壁構成一個天然的畫框，十分令人驚嘆。
+                                發達的珊瑚礁海岸受到海水長年劇烈侵蝕，形成無數深邃海蝕溝。由岩石下方看，蔚藍天空與兩側巨大珊瑚巨壁構成一個天然的畫框。
                             </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 秘境 3 -->
-                <div class="group relative rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80', '白燈塔星空銀河', '矗立於島上制高點的日式純白色燈塔。白天純白優雅，而夜晚因為完全零光害，是小琉球觀看璀璨銀河與星座夜空的最棒位置！')">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="小琉球白燈塔星空" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="handleImageError(this, '白燈塔星空', '🗼')">
+                <div class="group relative rounded-3xl overflow-hidden aspect-[3/4] shadow-2xl cursor-pointer" onclick="openLightbox('images/white_lighthouse.png', '白燈塔星空銀河', '矗立於島上制高點的日式純白色燈塔。白天純白優雅，而夜晚因為完全零光害，是小琉球觀看璀璨銀河與星座夜空的最棒位置！')">
+                    <img src="images/white_lighthouse.png" alt="白燈塔" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent flex flex-col justify-end p-8">
                         <div class="transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
                             <span class="bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-wider mb-2 inline-block">Secret 03</span>
-                            <h3 class="text-2xl font-black text-white mb-2">白燈塔璀璨浩瀚星空</h3>
+                            <h3 class="text-2xl font-black text-white mb-2">白燈塔璀璨星空</h3>
                             <p class="text-slate-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 leading-relaxed">
-                                白天高聳優雅矗立。深夜，當繁星鋪滿整個穹頂時，純白的塔身與耀眼的星河銀河交織，是無數星空攝影師的私房朝聖祕地。
+                                白天高聳優雅矗立。深夜，當繁星鋪滿整個穹頂時，純白的塔身與耀眼的星河銀河交織，是星空攝影師的私房朝聖之地。
                             </p>
                         </div>
                     </div>
@@ -974,6 +1164,178 @@
         </div>
     </section>
 
+    <!-- 互動式旅遊預算估算器 (Budget Calculator) -->
+    <section id="calculator" class="py-24 bg-slate-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl p-8 md:p-12 border border-slate-200/60 shadow-xl relative overflow-hidden">
+                <div class="absolute -top-12 -left-12 w-40 h-40 bg-teal-500/10 rounded-full blur-3xl"></div>
+                
+                <div class="text-center mb-10">
+                    <span class="text-teal-500 font-bold tracking-wider text-sm uppercase bg-teal-50 px-4 py-1.5 rounded-full"><i class="fa-solid fa-calculator"></i> 預算規劃工具</span>
+                    <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-3">小琉球旅遊預算快速估算器</h2>
+                    <p class="mt-2 text-slate-500 font-medium">調整下方選項，即時為您精算整趟旅程的預算花費！</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <!-- 輸入參數區 -->
+                    <div class="space-y-6">
+                        <!-- 人數 -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">1. 出遊人數 (人)</label>
+                            <div class="flex items-center gap-3">
+                                <button onclick="changeNum('calc-people', -1)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-lg flex items-center justify-center">-</button>
+                                <input type="number" id="calc-people" value="2" min="1" max="20" class="w-20 text-center font-bold text-lg bg-slate-50 border border-slate-200 rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-teal-500" onchange="calculateBudget()">
+                                <button onclick="changeNum('calc-people', 1)" class="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-lg flex items-center justify-center">+</button>
+                            </div>
+                        </div>
+
+                        <!-- 天數 -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">2. 旅遊天數</label>
+                            <select id="calc-days" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500" onchange="calculateBudget()">
+                                <option value="1">單日特快車（不留宿）</option>
+                                <option value="2" selected>2 天 1 夜（標準推薦）</option>
+                                <option value="3">3 天 2 夜（深度慢活）</option>
+                            </select>
+                        </div>
+
+                        <!-- 住宿風格 -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">3. 住宿風格</label>
+                            <select id="calc-hotel" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-medium focus:outline-none focus:ring-2 focus:ring-teal-500" onchange="calculateBudget()">
+                                <option value="0">當日來回（無留宿費）</option>
+                                <option value="800">青年旅館背包床位 (約 NT$800/人/晚)</option>
+                                <option value="1800" selected>標準雙人特色民宿 (約 NT$1800/人/晚)</option>
+                                <option value="3500">頂級獨棟海景 Villa (約 NT$3500/人/晚)</option>
+                            </select>
+                        </div>
+
+                        <!-- 活動體驗 -->
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">4. 想體驗的水上活動 (可多選)</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center gap-2 text-sm font-medium text-slate-600 cursor-pointer">
+                                    <input type="checkbox" id="act-snorkeling" value="400" checked class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="calculateBudget()"> 經典浮潛與海龜共遊 (NT$400/人)
+                                </label>
+                                <label class="flex items-center gap-2 text-sm font-medium text-slate-600 cursor-pointer">
+                                    <input type="checkbox" id="act-sup" value="800" class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="calculateBudget()"> SUP立式划槳 / 獨木舟 (NT$800/人)
+                                </label>
+                                <label class="flex items-center gap-2 text-sm font-medium text-slate-600 cursor-pointer">
+                                    <input type="checkbox" id="act-diving" value="2200" class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="calculateBudget()"> 專業水肺體驗潛水 (NT$2200/人)
+                                </label>
+                                <label class="flex items-center gap-2 text-sm font-medium text-slate-600 cursor-pointer">
+                                    <input type="checkbox" id="act-eco" value="150" checked class="w-4 h-4 text-teal-600 focus:ring-teal-500" onchange="calculateBudget()"> 潮間帶生態與夜間導覽 (NT$150/人)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 計算結果區 -->
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200/60 shadow-inner flex flex-col justify-between h-full">
+                        <div>
+                            <h4 class="font-bold text-slate-700 text-base mb-6 border-b border-slate-200 pb-3"><i class="fa-solid fa-chart-pie text-teal-500"></i> 即時預算精算</h4>
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500 font-medium">基本來回船票 + 租機車：</span>
+                                    <span class="font-bold text-slate-800" id="res-base">NT$ 850 /人</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500 font-medium">住宿小計：</span>
+                                    <span class="font-bold text-slate-800" id="res-lodging">NT$ 1,800 /人</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500 font-medium">體驗活動小計：</span>
+                                    <span class="font-bold text-slate-800" id="res-activities">NT$ 550 /人</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500 font-medium">餐飲與雜支預估 (NT$500/天)：</span>
+                                    <span class="font-bold text-slate-800" id="res-food">NT$ 1,000 /人</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <div class="text-center mb-4">
+                                <span class="text-xs text-slate-400 font-bold block uppercase tracking-wider">預估每人費用</span>
+                                <span class="text-4xl font-black text-teal-600" id="total-per-person">NT$ 4,200</span>
+                            </div>
+                            <div class="text-center p-3 bg-teal-500 text-white rounded-xl font-bold shadow-md shadow-teal-500/10">
+                                總預估費用 (共 <span id="res-people">2</span> 人)：
+                                <span class="text-xl font-black block mt-0.5" id="total-all-people">NT$ 8,400</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 旅遊常見問題 FAQ 摺疊選單 -->
+    <section id="faq" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <span class="text-sky-500 font-bold tracking-wider text-sm uppercase bg-sky-50 px-4 py-1.5 rounded-full"><i class="fa-solid fa-circle-question"></i> 答疑解惑</span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-3 section-title">小琉球旅遊常見問題 QA</h2>
+                <p class="mt-4 text-lg text-slate-500 font-medium">我們整理了前往小琉球出遊最常碰到的問題，幫您一次消除所有疑慮！</p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="space-y-4">
+                <!-- QA 1 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 accordion-item">
+                    <button class="w-full p-6 text-left font-bold text-slate-800 text-lg flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
+                        <span>Q1. 去小琉球適合幾月去？會有東北季風影響嗎？</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 accordion-arrow"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content bg-white border-t border-slate-100">
+                        <p class="p-6 text-slate-600 leading-relaxed font-medium text-sm">
+                            小琉球是全台灣唯一不受東北季風影響的避風珊瑚礁島嶼。一年四季都非常溫暖，冬季均溫仍有25度以上，因此<strong>整年都非常適合前往旅遊</strong>。若想避開擁擠人潮並享受涼爽天氣，最推崇 <strong>10 月至隔年 4 月</strong>的前往度假。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- QA 2 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 accordion-item">
+                    <button class="w-full p-6 text-left font-bold text-slate-800 text-lg flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
+                        <span>Q2. 不會游泳也可以體驗浮潛或水肺潛水嗎？會不會危險？</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 accordion-arrow"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content bg-white border-t border-slate-100">
+                        <p class="p-6 text-slate-600 leading-relaxed font-medium text-sm">
+                            <strong>完全可以！</strong> 浮潛時教練會提供救生衣與救生圈，您只需抱著救生圈，教練會全程在前方拖著您前行，不需要自己划水。體驗水肺潛水則是一對一帶領，教練會全程幫您控制浮力與方向，您只需放鬆呼吸與觀賞海底風景，非常安全安全。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- QA 3 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 accordion-item">
+                    <button class="w-full p-6 text-left font-bold text-slate-800 text-lg flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
+                        <span>Q3. 船票、機車與浮潛活動要分開自己預約嗎？</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 accordion-arrow"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content bg-white border-t border-slate-100">
+                        <p class="p-6 text-slate-600 leading-relaxed font-medium text-sm">
+                            強烈建議直接向您的民宿購買<strong>「套裝行程 (Package)」</strong>。民宿通常會幫您整合：來回船票、島上機車租借 24h、景點門票以及特色導覽（潮間帶或夜觀），不僅價格比自己分開買划算很多，登島後也只需要在窗口報民宿名字取票即可，省時省心！
+                        </p>
+                    </div>
+                </div>
+
+                <!-- QA 4 -->
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300 accordion-item">
+                    <button class="w-full p-6 text-left font-bold text-slate-800 text-lg flex justify-between items-center focus:outline-none" onclick="toggleAccordion(this)">
+                        <span>Q4. 島上有加油站嗎？租電動車會不會沒電？</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 accordion-arrow"></i>
+                    </button>
+                    <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out accordion-content bg-white border-t border-slate-100">
+                        <p class="p-6 text-slate-600 leading-relaxed font-medium text-sm">
+                            島上設有 1 座中油加油站（位於白沙漁港附近，營業時間為 07:00-19:30）。如果您租借的是 Gogoro 等電動機車，島上有數座非常密集的電池交換站（換電站），通常在 2 分鐘車程內就能換電，完全不用擔心沒電問題！
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 互動式行前準備清單 -->
     <section id="checklist" class="py-24 bg-slate-50">
         <div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -981,7 +1343,7 @@
                 <div class="text-center mb-10">
                     <span class="text-sky-500 font-bold tracking-wider text-sm uppercase bg-sky-50 px-4 py-1.5 rounded-full"><i class="fa-solid fa-suitcase"></i> 行李打包助手</span>
                     <h2 class="text-3xl md:text-4xl font-black text-slate-900 mt-3">小琉球海島行前清單</h2>
-                    <p class="mt-2 text-slate-500 font-medium">出發前最後檢查！點擊勾選您已放進行李箱的必備好物：</p>
+                    <p class="mt-2 text-slate-500 font-medium">出發前最後檢查！點擊勾選您已放進行李箱的必備物品：</p>
                 </div>
 
                 <!-- 交互勾選清單 -->
@@ -989,14 +1351,7 @@
                     <label class="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-sky-50 cursor-pointer transition-all select-none">
                         <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 transition-all">
                         <div class="text-sm">
-                            <span class="font-bold text-slate-800 block">機車與汽車駕照 🪪</span>
-                            <span class="text-xs text-slate-400">島上租用機車、電動車必備證件。</span>
-                        </div>
-                    </label>
-                    <label class="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-sky-50 cursor-pointer transition-all select-none">
-                        <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 transition-all">
-                        <div class="text-sm">
-                            <span class="font-bold text-slate-800 block">海洋友善防曬乳 / 水母衣 🧴</span>
+                            <span class="font-bold text-slate-800 block">海洋友善防曬乳 🧴</span>
                             <span class="text-xs text-slate-400">切勿使用含化學有害成分的防曬乳，保護珊瑚。</span>
                         </div>
                     </label>
@@ -1010,14 +1365,14 @@
                     <label class="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-sky-50 cursor-pointer transition-all select-none">
                         <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 transition-all">
                         <div class="text-sm">
-                            <span class="font-bold text-slate-800 block">拖鞋與個人泳衣泳帽 🩱</span>
-                            <span class="text-xs text-slate-400">水上活動、踩水沙灘、浮潛體驗必用。</span>
+                            <span class="font-bold text-slate-800 block">拖鞋與個人泳衣 🩱</span>
+                            <span class="text-xs text-slate-400">水上活動、踩水沙灘、浮潛體驗必備。</span>
                         </div>
                     </label>
                     <label class="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-sky-50 cursor-pointer transition-all select-none">
                         <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 transition-all">
                         <div class="text-sm">
-                            <span class="font-bold text-slate-800 block">防水防塵袋或防水手機殼 📱</span>
+                            <span class="font-bold text-slate-800 block">防水防塵袋或手機防水套 📱</span>
                             <span class="text-xs text-slate-400">搭船與玩水時，保護貴重電子用品。</span>
                         </div>
                     </label>
@@ -1025,7 +1380,14 @@
                         <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 transition-all">
                         <div class="text-sm">
                             <span class="font-bold text-slate-800 block">個人暈船藥 💊</span>
-                            <span class="text-xs text-slate-400">容易暈車浪的朋友，開船前半小時記得服用。</span>
+                            <span class="text-xs text-slate-400">容易暈船的朋友，搭船前半小時記得服用。</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:bg-sky-50 cursor-pointer transition-all select-none">
+                        <input type="checkbox" class="w-5 h-5 rounded border-slate-300 text-sky-500 focus:ring-sky-500 transition-all">
+                        <div class="text-sm">
+                            <span class="font-bold text-slate-800 block">水壺 / 環保杯 🥤</span>
+                            <span class="text-xs text-slate-400">登島後可免費借用「琉行杯」，一同減塑。</span>
                         </div>
                     </label>
                 </div>
@@ -1042,17 +1404,17 @@
                         <i class="fa-solid fa-water text-sky-400"></i> 琉戀忘返
                     </div>
                     <p class="text-sm text-slate-400 leading-relaxed max-w-sm font-medium">
-                        全台首屈一指的小琉球深度旅遊指南網站。提供最貼合在地人文與自然風土的經典美食、極密私房景點推介。希望每一位探險者在此邂逅湛藍奇蹟。
+                        全台首屈一指的小琉球深度旅遊與生態保育指南網站。提供最貼合在地人文與自然風土的行程、美食與私房景點推薦。希望每位探險者在此遇見湛藍奇蹟。
                     </p>
                 </div>
                 <div>
                     <h4 class="font-bold text-white text-lg mb-6 tracking-wide">快速連結</h4>
                     <ul class="space-y-3 text-sm">
                         <li><a href="#about" class="hover:text-white transition-colors">認識小琉球</a></li>
+                        <li><a href="#itinerary" class="hover:text-white transition-colors">推薦行程</a></li>
                         <li><a href="#interactive-map" class="hover:text-white transition-colors">導覽地圖</a></li>
                         <li><a href="#transport" class="hover:text-white transition-colors">交通指引</a></li>
-                        <li><a href="#attractions" class="hover:text-white transition-colors">經典地標</a></li>
-                        <li><a href="#food" class="hover:text-white transition-colors">在地美食</a></li>
+                        <li><a href="#calculator" class="hover:text-white transition-colors">預算估算</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1062,7 +1424,7 @@
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-rose-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-emerald-500 hover:text-white flex items-center justify-center transition-all"><i class="fa-brands fa-line text-lg"></i></a>
                     </div>
-                    <p class="text-xs text-slate-500 font-bold">未來可直接將此 index.html 檔上傳佈署至 GitHub Pages，一鍵產生公開網站！</p>
+                    <p class="text-xs text-slate-500 font-bold">未來可直接將此 index.html 檔上傳部署至 GitHub Pages，一鍵產生公開網站！</p>
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-8 text-center text-xs text-slate-500 flex flex-col md:flex-row justify-between gap-4">
@@ -1097,7 +1459,7 @@
             1: {
                 category: "經典地標",
                 title: "花瓶岩",
-                image: "https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=800&q=80",
+                image: "images/flower_vase_rock.png",
                 desc: "小琉球最知名、辨識度最高的地標！這是一塊隆起的珊瑚礁石灰岩，因下方長年受到海水海浪劇烈侵蝕，造就出「頭大身小」酷似花瓶的樣貌，頂部更自然生長了蔓草灌木。清澈見底的水質，也是野生海龜最喜愛逗留、覓食的區域，非常容易與綠蠵龜不期而遇！",
                 tip: "建議清晨6:00 - 8:00前往，此時遊客極少，海龜覓食活躍度高，非常適合浮潛與漫步。"
             },
@@ -1113,7 +1475,7 @@
                 title: "山豬溝原始林",
                 image: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
                 desc: "不同於其他多數看海的景點，山豬溝是以「地質景觀與茂盛植物」為看點的秘境森林。這裡保留了極為完整的熱帶雨林與巨型榕樹盤根，石灰岩峭壁上長滿了古老的蕨類植物。木棧步道蜿蜒在巨樹與奇石間，陽光灑下猶如置身吉卜力魔法森林。",
-                tip: "夏季中午前來最涼快，防蚊工作要做好。建議攜帶單眼，巨型榕樹根是非常棒的人像網美背景。"
+                tip: "夏季中午前來最涼快，防蚊工作要做好。建議攜帶相機，巨型榕樹根是非常棒的人像背景。"
             },
             4: {
                 category: "三大景區 (需門票)",
@@ -1132,21 +1494,21 @@
             6: {
                 category: "人氣秘境",
                 title: "網美老木",
-                image: "https://images.unsplash.com/photo-1473116763269-255ea742f5f6?auto=format&fit=crop&w=1200&q=80",
+                image: "images/wangmei_laomu.png",
                 desc: "位於大福漁港往旭日亭方向堤防邊的私房打卡聖地。因為大風浪將一根巨木打上礁岩、恰好卡在兩塊火山珊瑚礁石之間，形狀宛如海景第一排的天然沙發椅，背後襯著完全零污染的深邃藍海，吸引無數網美在此拍下氣質大片。",
                 tip: "從大福漁港沿著消波塊海堤步行需約5分鐘，礁石極易濕滑，請務必小心慢行，穿運動鞋或膠鞋，勿穿拖鞋。"
             },
             7: {
                 category: "人氣秘境",
                 title: "龍蝦洞海蝕溝",
-                image: "https://images.unsplash.com/photo-1468413253725-0d5181026217?auto=format&fit=crop&w=1200&q=80",
-                desc: "小琉球最發達、最深邃的海蝕溝地貌。以往居民在此捕捉龍蝦而得名。海浪湧入深長筆直的岩石裂縫中拍擊礁壁，退潮時還能小心沿一旁攀爬繩走下深溝（需極注意安全），形成一座天然的巨型珊瑚畫框。",
+                image: "images/lobster_cave.png",
+                desc: "小琉球最發達、最深邃的海蝕溝地貌。以往居民在此捕捉龍蝦而得名。海浪湧入深長筆直的岩石裂縫中拍擊礁壁，退潮時還能小心沿一旁攀爬繩走下深溝，形成一座天然的巨型珊瑚畫框。",
                 tip: "早晨陽光恰好直射海蝕溝時景色最美，在深溝下方拍照極具空間感，但請隨時留意潮汐漲退！"
             },
             8: {
                 category: "地標觀星",
                 title: "白燈塔與浪漫星空",
-                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
+                image: "images/white_lighthouse.png",
                 desc: "矗立於島上中央山丘頂制高點的純白燈塔。興建於日治時期，為國際性指引燈塔。白天純白圓柱塔身在青翠綠木中極具異國感，而深夜則因為海拔高、零光害，更成為全島看璀璨銀河與星座夜空的最棒位置！",
                 tip: "由於沿路沒有太多路燈，晚上騎車來夜觀、拍星空銀河時請放慢車速，並務必結伴同行注意安全。"
             },
@@ -1164,8 +1526,7 @@
             // 清除地圖上所有的 pin 特效
             document.querySelectorAll('.map-pin').forEach(pin => {
                 const circle = pin.querySelector('circle:first-of-type');
-                circle.classList.remove('map-pin-pulse', 'stroke-sky-500');
-                circle.classList.add('stroke-sky-500');
+                circle.classList.remove('map-pin-pulse');
                 circle.setAttribute('r', '14');
             });
 
@@ -1195,31 +1556,10 @@
                 
                 card.style.opacity = '1';
                 card.style.transform = 'scale(1)';
-            }, 300);
+            }, 250);
         }
 
-        // 3. 防破圖/藝術化自動生成替代圖片機制
-        function handleImageError(img, title, icon = '🐢') {
-            const parent = img.parentElement;
-            if (!parent) return;
-            img.style.display = 'none';
-            
-            // 檢查是否已有 fallback card
-            const oldFallback = parent.querySelector('.image-fallback-card');
-            if (oldFallback) return;
-
-            // 創建高質感的動態漸層占位圖卡
-            const fallback = document.createElement('div');
-            fallback.className = 'image-fallback-card w-full h-full min-h-[180px] bg-gradient-to-br from-sky-400 via-teal-500 to-indigo-500 flex flex-col items-center justify-center text-white p-6 text-center rounded-2xl shadow-inner';
-            fallback.innerHTML = `
-                <div class="text-4xl md:text-5xl mb-3 animate-bounce" style="animation-duration: 3s">${icon}</div>
-                <div class="font-extrabold text-base md:text-lg tracking-wide">${title}</div>
-                <div class="text-xs text-sky-100/90 mt-1.5"><i class="fa-solid fa-water"></i> 美麗景觀・加載中...</div>
-            `;
-            parent.appendChild(fallback);
-        }
-
-        // 4. 照片放大鏡 (Lightbox) 邏輯
+        // 3. 照片放大鏡 (Lightbox) 邏輯
         function openLightbox(src, title, desc) {
             const lightbox = document.getElementById('lightbox');
             document.getElementById('lightbox-img').src = src;
@@ -1243,9 +1583,78 @@
             }
         });
 
-        // 5. 初始化與基本動態效果
+        // 4. 預算估算器計算邏輯
+        function changeNum(id, val) {
+            const input = document.getElementById(id);
+            let newVal = parseInt(input.value) + val;
+            if (newVal < parseInt(input.min)) newVal = input.min;
+            if (newVal > parseInt(input.max)) newVal = input.max;
+            input.value = newVal;
+            calculateBudget();
+        }
+
+        function calculateBudget() {
+            const people = parseInt(document.getElementById('calc-people').value) || 1;
+            const days = parseInt(document.getElementById('calc-days').value) || 1;
+            const hotelCostPerPersonNight = parseInt(document.getElementById('calc-hotel').value) || 0;
+            
+            // 基本交通來回船票+租機車費用 (機車2人一台分攤計算)
+            // 來回船票 450 + 機車 24小時 (400/2=200) -> 約 650
+            let baseCostPerPerson = 450 + (days * 200); // 船票 + 機車分攤
+            
+            // 住宿費用小計
+            let lodgingCostPerPerson = hotelCostPerPersonNight * (days - 1);
+            
+            // 體驗活動小計
+            let activitiesCostPerPerson = 0;
+            if (document.getElementById('act-snorkeling').checked) activitiesCostPerPerson += parseInt(document.getElementById('act-snorkeling').value);
+            if (document.getElementById('act-sup').checked) activitiesCostPerPerson += parseInt(document.getElementById('act-sup').value);
+            if (document.getElementById('act-diving').checked) activitiesCostPerPerson += parseInt(document.getElementById('act-diving').value);
+            if (document.getElementById('act-eco').checked) activitiesCostPerPerson += parseInt(document.getElementById('act-eco').value);
+            
+            // 餐飲雜支 (NT$500 一天)
+            let foodCostPerPerson = days * 500;
+            
+            // 每人總計與全部總計
+            let totalPerPerson = baseCostPerPerson + lodgingCostPerPerson + activitiesCostPerPerson + foodCostPerPerson;
+            let totalAll = totalPerPerson * people;
+            
+            // 更新 UI
+            document.getElementById('res-base').innerText = `NT$ ${baseCostPerPerson.toLocaleString()} /人`;
+            document.getElementById('res-lodging').innerText = `NT$ ${lodgingCostPerPerson.toLocaleString()} /人`;
+            document.getElementById('res-activities').innerText = `NT$ ${activitiesCostPerPerson.toLocaleString()} /人`;
+            document.getElementById('res-food').innerText = `NT$ ${foodCostPerPerson.toLocaleString()} /人`;
+            
+            document.getElementById('total-per-person').innerText = `NT$ ${totalPerPerson.toLocaleString()}`;
+            document.getElementById('res-people').innerText = people;
+            document.getElementById('total-all-people').innerText = `NT$ ${totalAll.toLocaleString()}`;
+        }
+
+        // 5. Accordion 摺疊切換
+        function toggleAccordion(button) {
+            const item = button.parentElement;
+            const content = button.nextElementSibling;
+            
+            if (item.classList.contains('accordion-active')) {
+                // 關閉
+                item.classList.remove('accordion-active');
+                content.style.maxHeight = '0';
+            } else {
+                // 先關閉其他
+                document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    otherItem.classList.remove('accordion-active');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = '0';
+                });
+                
+                // 開啟當前
+                item.classList.add('accordion-active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+
+        // 6. 初始化與事件綁定
         document.addEventListener('DOMContentLoaded', () => {
-            // 導覽列滾動動態背景
+            // 導覽列滾動效果
             const navbar = document.getElementById('navbar');
             const navLogo = document.getElementById('nav-logo');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1282,7 +1691,7 @@
                 }
             });
 
-            // 手機版漢堡選單切換
+            // 手機版選單
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -1302,35 +1711,46 @@
                 });
             });
 
-            // 美食頁籤分類切換邏輯
-            const tabBtns = document.querySelectorAll('.food-tab-btn');
-            const tabContents = document.querySelectorAll('.food-content');
+            // 行程分頁切換
+            const itineraryBtns = document.querySelectorAll('.itinerary-tab-btn');
+            const itineraryContents = document.querySelectorAll('.itinerary-content');
 
-            tabBtns.forEach(btn => {
+            itineraryBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // 清除所有按鈕狀態
-                    tabBtns.forEach(b => {
-                        b.classList.remove('bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/10');
-                        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                    itineraryBtns.forEach(b => {
+                        b.classList.remove('bg-sky-500', 'text-white', 'shadow-md', 'shadow-sky-500/10');
+                        b.classList.add('bg-slate-100', 'text-slate-600');
                     });
-                    
-                    // 點亮當前按鈕
-                    btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-                    btn.classList.add('bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/10');
+                    btn.classList.remove('bg-slate-100', 'text-slate-600');
+                    btn.classList.add('bg-sky-500', 'text-white', 'shadow-md', 'shadow-sky-500/10');
 
-                    // 隱藏所有美食展示卡
-                    tabContents.forEach(content => {
-                        content.classList.add('hidden');
-                    });
-
-                    // 淡入顯示目標類別
+                    itineraryContents.forEach(c => c.classList.add('hidden'));
                     const targetId = btn.getAttribute('data-target');
-                    const activeContent = document.getElementById(targetId);
-                    activeContent.classList.remove('hidden');
+                    document.getElementById(targetId).classList.remove('hidden');
                 });
             });
 
-            // 初始化：自動載入花瓶岩地圖資訊
+            // 美食頁籤分類切換
+            const foodBtns = document.querySelectorAll('.food-tab-btn');
+            const foodContents = document.querySelectorAll('.food-content');
+
+            foodBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    foodBtns.forEach(b => {
+                        b.classList.remove('bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/10');
+                        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                    });
+                    btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                    btn.classList.add('bg-orange-500', 'text-white', 'shadow-md', 'shadow-orange-500/10');
+
+                    foodContents.forEach(c => c.classList.add('hidden'));
+                    const targetId = btn.getAttribute('data-target');
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+
+            // 初始化預算計算器與地圖點擊
+            calculateBudget();
             selectMapSpot(1, null);
         });
     </script>
