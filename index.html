@@ -327,8 +327,10 @@
                         <span><i class="fa-solid fa-hd text-sky-500 mr-1"></i> 超高清畫質</span>
                     </div>
                 </div>
-                <div class="lg:col-span-7 w-full aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-100">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/YM_1MB42GfE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div id="video-wrapper" class="lg:col-span-7 w-full aspect-video rounded-2xl overflow-hidden shadow-md border border-slate-100 relative">
+                    <iframe id="liu-youtube-video" class="w-full h-full" src="https://www.youtube.com/embed/YM_1MB42GfE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <!-- GA4 點擊追蹤：透明覆蓋層捕捉首次點擊 -->
+                    <div id="video-click-overlay" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;cursor:pointer;" title="點擊播放影片"></div>
                 </div>
             </div>
         </div>
@@ -1780,6 +1782,41 @@
             // 初始化預算計算器與地圖點擊
             calculateBudget();
             selectMapSpot(1, null);
+
+            // ── GA4 影片點擊事件追蹤：感興趣的使用者 ──────────────────────────
+            // 策略：透明 overlay 捕捉首次點擊後移除自身，並持續用 window blur
+            // 偵測後續使用者聚焦至 iframe 的行為（均視為感興趣）。
+            let videoEventFired = false;
+
+            function fireVideoInterestEvent() {
+                if (typeof gtag === 'function') {
+                    gtag('event', 'video_click', {
+                        'event_category': '影片互動',
+                        'event_label': '感興趣的使用者',
+                        'video_title': '小琉球深度探索影音導覽'
+                    });
+                }
+                console.log('[GA4] video_click event fired → 感興趣的使用者');
+                videoEventFired = true;
+            }
+
+            // 方法一：透明 overlay 攔截首次點擊
+            const videoOverlay = document.getElementById('video-click-overlay');
+            if (videoOverlay) {
+                videoOverlay.addEventListener('click', function () {
+                    fireVideoInterestEvent();
+                    // 移除 overlay 讓 iframe 可正常互動
+                    videoOverlay.style.display = 'none';
+                });
+            }
+
+            // 方法二：window blur 偵測後續 iframe 聚焦（適用於再次點擊影片控制列等）
+            window.addEventListener('blur', function () {
+                if (document.activeElement && document.activeElement.id === 'liu-youtube-video') {
+                    fireVideoInterestEvent();
+                }
+            });
+            // ─────────────────────────────────────────────────────────────────
         });
     </script>
 </body>
